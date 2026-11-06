@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1c1f" />
+    <title>Weave</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <!-- With its cookies: Access stands in front of every file. -->
+    <link rel="manifest" href="./manifest.webmanifest" crossorigin="use-credentials" />
+    <style>
+      /* Notes' typefaces: the system's own. styles/index.css sets the app
+         and its pages in these variables. */
+      :where(:root) {
+        --notes-font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        --notes-font-body-italic: var(--notes-font-body);
+        --notes-font-serif: "Iowan Old Style", "Palatino Linotype", Georgia, "Noto Serif", "Noto Serif CJK TC", "PMingLiU", serif;
+        --notes-font-serif-italic: var(--notes-font-serif);
+        --notes-font-code: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      }
+    </style>
+    <script>
+      /* The stylesheet describes dark exactly once, under [data-theme="dark"],
+         and React writes that attribute on mount. Without this line the first
+         painted frame would be light on a dark desk. The member's own saved
+         choice arrives with the workspace and supersedes this guess. */
+      document.documentElement.dataset.theme =
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

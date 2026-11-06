@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env*
+.DS_Store
+*.log
+ui/
+.superpowers/
+.wrangler/
+# Design notes and plans, kept on this machine only.
+docs/superpowers/

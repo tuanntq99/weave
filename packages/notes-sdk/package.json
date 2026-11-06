@@ -1,0 +1,21 @@
+{
+  "name": "@notes/sdk",
+  "version": "0.0.1-local",
+  "description": "Notes' own SDK: typed schema, live collections in IndexedDB synced across tabs, files, people, spaces and presence.",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@notes/sync-protocol": "*"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./fields": {
+      "types": "./src/fields.ts",
+      "default": "./src/fields.ts"
+    }
+  }
+}

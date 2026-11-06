@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title desc">
+  <title id="title">Weave</title>
+  <desc id="desc">Pages, blocks and databases. Offline first, synced everywhere, self-hosted on Cloudflare.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="0.55" stop-color="#1e1b4b"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="thread-a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="thread-b" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f472b6" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#fb923c"/>
+      <stop offset="1" stop-color="#facc15" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#818cf8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .thread { fill: none; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: draw 3.2s ease-out forwards; }
+      .thread.b { animation-delay: .35s; }
+      .thread.c { animation-delay: .7s; stroke-width: 2; opacity: .7; }
+      .glow { animation: breathe 6s ease-in-out infinite; transform-origin: 980px 160px; }
+      .title { font: 800 92px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #fff; letter-spacing: -2px; opacity: 0; animation: rise .9s .2s ease-out forwards; }
+      .tag { font: 500 26px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #c7d2fe; opacity: 0; animation: rise .9s .55s ease-out forwards; }
+      .chip { font: 600 15px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #e0e7ff; }
+      .chips { opacity: 0; animation: rise .9s .9s ease-out forwards; }
+      .dot { animation: pulse 2.4s ease-in-out infinite; }
+      .dot.d2 { animation-delay: .8s; }
+      .dot.d3 { animation-delay: 1.6s; }
+      @keyframes draw { to { stroke-dashoffset: 0; } }
+      @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+      @keyframes breathe { 0%, 100% { transform: scale(1); opacity: .8; } 50% { transform: scale(1.12); opacity: 1; } }
+      @keyframes pulse { 0%, 100% { r: 5; opacity: .9; } 50% { r: 8; opacity: .4; } }
+      @media (prefers-reduced-motion: reduce) { * { animation: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; } }
+    </style>
+  </defs>
+
+  <rect width="1280" height="320" rx="24" fill="url(#sky)"/>
+  <circle class="glow" cx="980" cy="160" r="230" fill="url(#glow)"/>
+
+  <!-- Threads woven across the right side: devices in sync. -->
+  <path class="thread a" stroke="url(#thread-a)" d="M640 250 C 760 120, 860 300, 980 160 S 1180 60, 1300 140"/>
+  <path class="thread b" stroke="url(#thread-b)" d="M640 90 C 760 220, 880 40, 980 160 S 1170 260, 1300 190"/>
+  <path class="thread c" stroke="#a5b4fc" d="M660 170 C 780 150, 880 180, 980 160 S 1160 150, 1300 165"/>
+  <circle class="dot" cx="980" cy="160" r="6" fill="#fff"/>
+  <circle class="dot d2" cx="1116" cy="104" r="5" fill="#38bdf8"/>
+  <circle class="dot d3" cx="1112" cy="214" r="5" fill="#fb923c"/>
+
+  <text class="title" x="72" y="150">Weave</text>
+  <text class="tag" x="76" y="198">Your notes, offline first and synced everywhere.</text>
+
+  <g class="chips">
+    <rect x="76" y="232" width="122" height="34" rx="17" fill="#ffffff" fill-opacity=".1" stroke="#a5b4fc" stroke-opacity=".35"/>
+    <text class="chip" x="137" y="254" text-anchor="middle">Offline first</text>
+    <rect x="210" y="232" width="150" height="34" rx="17" fill="#ffffff" fill-opacity=".1" stroke="#a5b4fc" stroke-opacity=".35"/>
+    <text class="chip" x="285" y="254" text-anchor="middle">Real-time sync</text>
+    <rect x="372" y="232" width="178" height="34" rx="17" fill="#ffffff" fill-opacity=".1" stroke="#a5b4fc" stroke-opacity=".35"/>
+    <text class="chip" x="461" y="254" text-anchor="middle">Cloudflare free tier</text>
+  </g>
+</svg>

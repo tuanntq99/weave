@@ -1,0 +1,27 @@
+{
+  // Notes' sync server: the app's pages as static assets, /api for sync and
+  // files, one Durable Object per scope. Behind Cloudflare Access when
+  // deployed (spec S3 §6, §11).
+  "name": "notes",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-11-01",
+  // Only notes.<subdomain>.workers.dev, which Access guards: no preview
+  // addresses beside it that Access would not.
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": { "directory": "../dist", "not_found_handling": "single-page-application", "run_worker_first": ["/api/*"] },
+  "durable_objects": {
+    "bindings": [
+      { "name": "SCOPE", "class_name": "ScopeDO" },
+      { "name": "DIRECTORY", "class_name": "DirectoryDO" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ScopeDO", "DirectoryDO"] }],
+  "r2_buckets": [{ "binding": "FILES", "bucket_name": "notes-files" }],
+  "triggers": { "crons": ["0 3 * * *"] }
+  // Your own values are set on Cloudflare, not here (README: Self-hosting):
+  //   npx wrangler secret put ACCESS_TEAM -c server/wrangler.jsonc   (Zero Trust team name)
+  //   npx wrangler secret put ACCESS_AUD  -c server/wrangler.jsonc   (the Access application's AUD tag)
+  //   npx wrangler secret put OWNER_EMAIL -c server/wrangler.jsonc   (who may use the admin restore)
+  //   npx wrangler secret put SHARING     -c server/wrangler.jsonc   (optional: "on" to share spaces)
+}
